@@ -1,0 +1,70 @@
+﻿@using WebApplication2.Models
+@model List<NotTBL>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<br />
+<br />
+<html>
+
+<head>
+    <title>NotListesi</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+</head>
+<body>
+    <div>
+        <h2>Notlarım</h2>
+
+    </div>
+    <br />
+
+    <table class="table table-responsive-sm">
+        <tr class="w3-light-grey w3-hover-red">
+            <th>Not ID</th>
+            <th>Not Başlığı</th>
+            <th>Not İçeriği</th>
+            <th>Not Alma Tarihi</th>
+         
+            <th>Sil</th>
+            <th>Güncelle</th>
+
+
+
+
+
+
+
+        </tr>
+
+
+
+        @foreach (var gis in Model)
+        {
+
+
+            <tr class="w3-hover-blue">
+                <td>@gis.NotID</td>
+                <td>@gis.NotBasligi</td>
+                <td>@gis.NotIcerik</td>
+            
+
+                <td>@Convert.ToDateTime(gis.NotAlinmaTarih).ToString("dd/MM/yyyy")</td>
+                
+                <td><a href="/NotAl/NotSil/@gis.NotID" class="btn btn-danger">SİL</a>  </td>
+                <td><a href="/NotAl/NotGetir/@gis.NotID" class="btn btn-success">GÜNCELLE</a></td>
+
+
+
+            </tr>
+
+        }
+
+    </table>
+    <a href="/NotAl/YeniNot" class="btn btn-primary">Not Ekle</a>
+</body>
+
+</html>

@@ -1,0 +1,75 @@
+﻿@model WebApplication2.Models.AylikIsTBL
+@{
+    ViewData["Title"] = "YeniAylik";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+
+<!DOCTYPE html>
+<html>
+<title>AylikEkle</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<body>
+    <br />
+    <br />
+    <br />
+
+    <form class="w3-container w3-card-4 w3-light-grey w3-text-blue w3-margin" method="post">
+        <h2 class="w3-center">Aylik İş Ekle</h2>
+
+        <div class="w3-row w3-section">
+            <div><label>Aylik İş Ekleyen Kullanıcı</label></div>
+            <div class="w3-rest">
+                @Html.DropDownListFor(x => x.KullaniciTBL.KullaniciID, (List<SelectListItem>)ViewBag.kuldgr, "Kullanıcı Seçiniz", new { @class = "form-control" })
+            </div>
+        </div>
+
+        <div class="w3-row w3-section">
+            <div><label>Aylik İş</label></div>
+            <div class="w3-rest">
+                @Html.TextBoxFor(x => x.IsBasligi, new { @class = "form-control" })
+            </div>
+        </div>
+
+        <div class="w3-row w3-section">
+            <div><label>Aylik İşin İçeriği</label></div>
+            <div class="w3-rest">
+                @Html.TextBoxFor(x => x.Aciklama, new { @class = "form-control" })
+            </div>
+        </div>
+
+
+        <div class="w3-row w3-section">
+            <div><label>İşin Başlangıç Tarihi</label></div>
+            <div class="w3-rest">
+                <input type="text" class="form-control" name="BaslamaTarihi" value="@DateTime.Now.ToShortDateString()" placeholder="İsin Baslama Tarihi" />
+
+            </div>
+        </div>
+
+        <div class="w3-row w3-section">
+            <div><label>İşin Bitiş Tarihi</label></div>
+            <div class="w3-rest">
+                <input type="date" class="form-control" name="BitisTarihi" />
+
+            </div>
+        </div>
+
+
+
+
+
+        <button class="w3-button w3-block w3-section w3-blue w3-ripple w3-padding">Yeni Aylik İş Ekle</button>
+
+    </form>
+
+</body>
+</html>
+
+
+
+
+
+

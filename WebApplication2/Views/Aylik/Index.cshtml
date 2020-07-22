@@ -1,0 +1,72 @@
+﻿@using WebApplication2.Models
+@model List<AylikIsTBL>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<br />
+<br />
+<html>
+
+<head>
+    <title>AylikİşListesi</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+</head>
+<body>
+    <div>
+        <h2>Aylik Yapılacaklar Listesi</h2>
+
+    </div>
+    <br />
+
+    <table class="table table-responsive-sm">
+        <tr class="w3-light-grey w3-hover-red">
+            <th>Yapılacak İş ID</th>
+            <th>İş Başlığı</th>
+            <th>İşin İçeriği</th>
+            <th>Başlama Tarihi</th>
+            <th>Bitiş Tarihi</th>
+            <th>Sil</th>
+            <th>Güncelle</th>
+
+
+
+
+
+
+
+        </tr>
+
+
+
+        @foreach (var gis in Model)
+        {
+
+
+            <tr class="w3-hover-blue">
+                <td>@gis.AylikID</td>
+                <td>@gis.IsBasligi</td>
+                <td>@gis.Aciklama</td>
+
+                <td>@Convert.ToDateTime(gis.BaslamaTarihi).ToString("dd/MM/yyyy")</td>
+                <td>@Convert.ToDateTime(gis.BitisTarihi).ToString("dd/MM/yyyy")</td>
+                <td><a href="/Aylik/AylikSil/@gis.AylikID" class="btn btn-danger">SİL</a></td>
+                <td><a href="/Aylik/AylikGetir/@gis.AylikID" class="btn btn-success">GÜNCELLE</a></td>
+
+
+
+            </tr>
+
+        }
+
+    </table>
+    <a href="/Aylik/YeniAylik" class="btn btn-primary">Aylik İş Ekle</a>
+</body>
+
+</html>
+
+
+
